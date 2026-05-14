@@ -8,7 +8,7 @@ class SitterProfile(models.Model):
     years_experience = models.PositiveIntegerField(default=0)
 
     def __str__(self):
-        return f"{self.user.first_name} {self.user.last_name} — {self.city}"
+        return f"{self.user.first_name} {self.user.last_name} - {self.sitter.user.username} — {self.city}"
     
 class Service(models.Model):
     name = models.CharField(max_length=100, unique=True)
@@ -30,7 +30,7 @@ class SitterService(models.Model):
         unique_together = ("sitter", "service")
 
     def __str__(self):
-        return f"{self.sitter.user.first_name} — {self.service.name} (${self.price_per_day}/day)"
+        return f"{self.sitter.user.first_name} — {self.service.name} - (${self.price_per_day}/day)"
     
 class Pet(models.Model):
     SPECIES_CHOICES = [
